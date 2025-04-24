@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mohye\\Desktop\\skinet\\Infrastructure\\Infrastructure.csproj": {}
+    "/home/mohye/Desktop/skinet/Infrastructure/Infrastructure.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mohye\\Desktop\\skinet\\Core\\Core.csproj": {
+    "/home/mohye/Desktop/skinet/Core/Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mohye\\Desktop\\skinet\\Core\\Core.csproj",
+        "projectUniqueName": "/home/mohye/Desktop/skinet/Core/Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\mohye\\Desktop\\skinet\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\mohye\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mohye\\Desktop\\skinet\\Core\\obj\\",
+        "projectPath": "/home/mohye/Desktop/skinet/Core/Core.csproj",
+        "packagesPath": "/home/mohye/.nuget/packages/",
+        "outputPath": "/home/mohye/Desktop/skinet/Core/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mohye\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/mohye/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -65,40 +59,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mohye\\Desktop\\skinet\\Infrastructure\\Infrastructure.csproj": {
+    "/home/mohye/Desktop/skinet/Infrastructure/Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mohye\\Desktop\\skinet\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "/home/mohye/Desktop/skinet/Infrastructure/Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\mohye\\Desktop\\skinet\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\mohye\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mohye\\Desktop\\skinet\\Infrastructure\\obj\\",
+        "projectPath": "/home/mohye/Desktop/skinet/Infrastructure/Infrastructure.csproj",
+        "packagesPath": "/home/mohye/.nuget/packages/",
+        "outputPath": "/home/mohye/Desktop/skinet/Infrastructure/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\mohye\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/mohye/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\mohye\\Desktop\\skinet\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\mohye\\Desktop\\skinet\\Core\\Core.csproj"
+              "/home/mohye/Desktop/skinet/Core/Core.csproj": {
+                "projectPath": "/home/mohye/Desktop/skinet/Core/Core.csproj"
               }
             }
           }
@@ -144,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.203/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
