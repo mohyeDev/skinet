@@ -1,4 +1,5 @@
 using Core.Entities;
+using Core.Specification;
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,8 +14,11 @@ public class ProductsController(IGenericRepository<Product> repo) : ControllerBa
 
     public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts(string? brand , string? type , string? sort)
     {
+        var spec =new ProductSpecification(brand , type);
 
-        return Ok(await repo.ListAllAsync());
+        var products = await repo.ListAsync(spec);
+
+        return Ok(products);
     }
     [HttpGet("{id:int}")] //api/products/2
 
