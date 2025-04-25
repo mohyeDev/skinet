@@ -24,3 +24,10 @@ public class BaseSpecification<T>(Expression<Func<T, bool>>? criteria) : ISpecif
         OrderByDesc = orderByDescendingExpression  ;
     }
 }
+
+
+public class BaseSpecification<T, TResult>(Expression<Func<T, bool>> criteria)
+: BaseSpecification<T>(criteria), ISpecification<T, TResult>
+{
+    public Expression<Func<T, TResult>>? Select {get; private set;}
+}
