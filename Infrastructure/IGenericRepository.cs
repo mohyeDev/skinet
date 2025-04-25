@@ -1,4 +1,5 @@
 using Core.Entities;
+using Core.Interfaces;
 
 namespace Infrastructure;
 
@@ -18,5 +19,9 @@ public interface IGenericRepository<T> where T : BaseEntity
     Task<bool> SaveAllAsync();
 
     bool Exists(int id);
+
+    Task<T?> GetEntityWithSpec(ISpecification<T> spec);
+
+    Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec) ;
     
 }
