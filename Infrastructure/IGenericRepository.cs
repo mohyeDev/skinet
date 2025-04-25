@@ -5,7 +5,7 @@ namespace Infrastructure;
 public interface IGenericRepository<T> where T : BaseEntity
 {
 
-    Task<T> GetbyIdAsync(int id);
+    Task<T> GetByIdAsync(int id);
 
     Task<IReadOnlyList<T>> ListAllAsync();
 
@@ -17,7 +17,6 @@ public interface IGenericRepository<T> where T : BaseEntity
 
     Task<bool> SaveAllAsync();
 
-    bool Exits(int id);
-
-
+    bool Exists(int id);
+    
 }

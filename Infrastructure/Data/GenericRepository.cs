@@ -13,15 +13,17 @@ public class GenericRepository<T>(StoreContext context) : IGenericRepository<T> 
         context.Set<T>().Add(entity);
     }
 
-    public bool Exits(int id)
+    public bool Exists(int id)
     {
         return context.Set<T>().Any(x => x.Id == id);
     }
 
-    public async Task<T> GetbyIdAsync(int id)
+  
+    public async Task<T> GetByIdAsync(int id)
     {
         return await context.Set<T>().FindAsync(id);
     }
+
 
     public async Task<IReadOnlyList<T>> ListAllAsync()
     {
