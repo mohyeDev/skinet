@@ -1,4 +1,5 @@
 using Core.Interfaces;
+using Infrastructure;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,12 +10,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 
-builder.Services.AddDbContext<StoreContext>(options => {
+builder.Services.AddDbContext<StoreContext>(options =>
+{
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-builder.Services.AddTransient<IProductRepository , ProductRepository>();
-
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 var app = builder.Build();
 
 
@@ -29,8 +31,8 @@ try
 }
 catch (Exception ex)
 {
-    
-   Console.WriteLine(ex);
+
+    Console.WriteLine(ex);
     throw;
 }
 
