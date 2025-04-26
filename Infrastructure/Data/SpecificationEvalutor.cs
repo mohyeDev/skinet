@@ -22,6 +22,11 @@ public class SpecificationEvalutor<T> where T : BaseEntity
             query = query.OrderByDescending(spec.OrderByDesc);
         }
 
+        if(spec.IsDistnict)
+        {
+            query = query.Distinct();
+        }
+
         return query;
     }
 
@@ -51,6 +56,12 @@ public class SpecificationEvalutor<T> where T : BaseEntity
 
                selectQuery = query.Select(spec.Select);
 
+        }
+
+        if(spec.IsDistnict)
+        {
+
+                selectQuery = selectQuery?.Distinct();
         }
 
 

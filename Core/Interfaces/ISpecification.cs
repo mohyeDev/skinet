@@ -12,6 +12,8 @@ public interface ISpecification<T>
 
     Expression<Func<T, object>>? OrderByDesc { get; }
 
+    bool IsDistnict {get;}
+
 }
 
 

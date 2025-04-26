@@ -89,7 +89,9 @@ public class ProductsController(IGenericRepository<Product> repo) : ControllerBa
     public async Task<ActionResult<IReadOnlyList<string>>> GetBrands()
     {
 
-        return Ok();
+        var spec = new BrandListSpecification();
+
+        return Ok(await repo.ListAsync(spec));
     }
 
 
@@ -97,7 +99,9 @@ public class ProductsController(IGenericRepository<Product> repo) : ControllerBa
 
     public async Task<ActionResult<IReadOnlyList<string>>> GetTypes()
     {
-        return Ok();
+
+        var spec = new TypeListSpecification();
+        return Ok(await repo.ListAsync(spec));
     }
 
 
