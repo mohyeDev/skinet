@@ -19,6 +19,9 @@ public interface ISpecification<T>
 
     bool IsPagingEnabled {get;}
 
+    IQueryable<T> ApplyCriteria(IQueryable<T> query);
+
+
 }
 
 

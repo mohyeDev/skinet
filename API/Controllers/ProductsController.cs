@@ -1,3 +1,4 @@
+using API.RequestHelper;
 using Core.Entities;
 using Core.Specification;
 using Infrastructure;
@@ -18,7 +19,11 @@ public class ProductsController(IGenericRepository<Product> repo) : ControllerBa
 
         var products = await repo.ListAsync(spec);
 
-        return Ok(products);
+        var count = await repo.CountAsync(spec);
+
+        var Pagination = new Pagination<Product>(specParams.PageIndex,specParams.PageSize,count,products);
+
+        return Ok(Pagination);
     }
     [HttpGet("{id:int}")] //api/products/2
 

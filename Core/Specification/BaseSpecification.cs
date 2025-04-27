@@ -21,6 +21,16 @@ public class BaseSpecification<T>(Expression<Func<T, bool>>? criteria) : ISpecif
 
     public bool IsPagingEnabled {get ; private set ;}
 
+    public IQueryable<T> ApplyCriteria(IQueryable<T> query)
+    {
+        if(criteria is not null)
+        {
+            query = query.Where(criteria);
+        }
+
+        return query ; 
+    }
+
     protected void AddOrderBy(Expression<Func<T, object>> orderByExpression)
     {
 
