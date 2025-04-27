@@ -5,9 +5,8 @@ using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
-[ApiController]
-[Route("api/[controller]")]
-public class ProductsController(IGenericRepository<Product> repo) : ControllerBase
+
+public class ProductsController(IGenericRepository<Product> repo) : BaseApiController
 {
    
 
@@ -17,13 +16,8 @@ public class ProductsController(IGenericRepository<Product> repo) : ControllerBa
     {
         var spec =new ProductSpecification(specParams);
 
-        var products = await repo.ListAsync(spec);
 
-        var count = await repo.CountAsync(spec);
-
-        var Pagination = new Pagination<Product>(specParams.PageIndex,specParams.PageSize,count,products);
-
-        return Ok(Pagination);
+        return await CreatePagedResult(repo,spec,specParams.PageIndex,specParams.PageSize);
     }
     [HttpGet("{id:int}")] //api/products/2
 
