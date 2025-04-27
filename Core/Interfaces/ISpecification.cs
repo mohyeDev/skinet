@@ -14,6 +14,11 @@ public interface ISpecification<T>
 
     bool IsDistnict {get;}
 
+    int Take {get;}
+    int Skip  {get;}
+
+    bool IsPagingEnabled {get;}
+
 }
 
 
