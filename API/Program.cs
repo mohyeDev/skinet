@@ -9,7 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.HttpsPort = 5221; // match the port you used (5221)
+});
 
 builder.Services.AddDbContext<StoreContext>(options =>
 {
