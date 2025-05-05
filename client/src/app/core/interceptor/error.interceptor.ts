@@ -12,6 +12,24 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((err: HttpErrorResponse) => {
       if (err.status === 400) {
+        if(err.error.errors)
+        {
+          const modelStateError = [];
+          for (const key in err.error.errors) {
+            
+            if(err.error.errors[key])
+            {
+              modelStateError.push(err.error.errors[key]);
+            }
+
+          }
+
+          throw modelStateError.flat();
+        }
+
+        else{
+          
+        }
         snackbar.error(err.error.title || err.error)
       }
 
