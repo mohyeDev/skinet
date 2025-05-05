@@ -13,6 +13,7 @@ import { FiltersDialogComponent } from './filters-dialog/filters-dialog.componen
 import { MatListOption, MatSelectionList, MatSelectionListChange } from '@angular/material/list';
 import { Pagination } from '../../shared/models/pagination';
 import { FormsModule } from '@angular/forms';
+import { RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     MatListOption,
     MatMenuTrigger,
     MatPaginator,
-    FormsModule
+    FormsModule,
+
 ],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
@@ -40,7 +42,7 @@ export class ShopComponent implements OnInit{
   sortOptions = [
     {name : "Alphabetical",value : 'name'},
     {name : "Price: Low-High",value : 'priceAsc'},
-    {name : "Price: High-Low",value : 'PriceDesc'}
+    {name : "Price: High-Low",value : 'priceDesc'}
 
   ]
 
