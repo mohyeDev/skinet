@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import { ShopComponent } from './features/shop/shop.component';
 import { ProductDetailsComponent } from './features/shop/product-details/product-details.component';
+import { TestErrorComponent } from './features/test-error/test-error.component';
 
 export const routes: Routes = [
     {
@@ -9,16 +10,21 @@ export const routes: Routes = [
         component: HomeComponent
     },
     {
-        path : 'shop',
-        component :ShopComponent
+        path: 'shop',
+        component: ShopComponent
     },
     {
         path: 'shop/:id',
-        component:ProductDetailsComponent
+        component: ProductDetailsComponent
+    },
+
+    {
+        path : 'test-error',
+        component:TestErrorComponent
     },
     {
-        path:'**',
+        path: '**',
         redirectTo: '',
-        pathMatch:'full'
+        pathMatch: 'full'
     }
 ];
