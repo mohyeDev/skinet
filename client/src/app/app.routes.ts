@@ -5,6 +5,7 @@ import { ProductDetailsComponent } from './features/shop/product-details/product
 import { TestErrorComponent } from './features/test-error/test-error.component';
 import { NotFoundComponent } from './shared/component/not-found/not-found.component';
 import { ServerErrorComponent } from './shared/component/server-error/server-error.component';
+import { CartComponent } from './features/cart/cart.component';
 
 export const routes: Routes = [
     {
@@ -33,6 +34,13 @@ export const routes: Routes = [
         path:'server-error',
         component:ServerErrorComponent
     },
+
+    {
+        path:'cart',
+        component:CartComponent
+    },
+
+    
     {
         path: '**',
         redirectTo: 'not-found',
