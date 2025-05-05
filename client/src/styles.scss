@@ -30,4 +30,9 @@ $customTheme : mat.define-theme();
 
 button.match-input-heigth {
     height: var(--mat-form-field-container-heigth) !important;
+
+}
+
+.mdc-notched-outline__notch{
+    border-right-style: none !important;
 }
