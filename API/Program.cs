@@ -42,7 +42,7 @@ var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200","https://localhost:4200"));
 app.MapControllers();
-app.MapGroup("api").MapIdentityApi<AppUser>(); // api/login 
+app.MapGroup("api").MapIdentityApi<AppUser>(); // api/login , register , ...
 try
 {
     using var scope = app.Services.CreateScope();
