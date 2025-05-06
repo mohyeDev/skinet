@@ -5,9 +5,9 @@ namespace API.Extensions;
 
 public static class AddressMappingExtensions
 {
-    public static AddressDto ToDto(this Address address)
+    public static AddressDto ToDto(this Address? address)
     {
-        if (address is null) throw new ArgumentException(nameof(address));
+        if (address is null) return null ; 
         return new AddressDto
         {
             Line1 = address.Line1,
