@@ -2,7 +2,7 @@ import {nanoid} from 'nanoid'
 export type CartType = {
     id : string ,
     items : CartItem[]; 
-    deliveryMethidId? : number ; 
+    deliveryMethodId? : number ; 
     paymentIntentId? : string ;
     clientSecret? : string ;
 }
