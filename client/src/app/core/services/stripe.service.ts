@@ -57,7 +57,6 @@ export class StripeService {
       
 
       const elements = await this.initializeElements();
-      console.log('zxzxz',elements);
       
       if(elements)
       {
@@ -88,7 +87,7 @@ export class StripeService {
         if(user?.address != null)
         {
 
-          console.log(user.address);
+     
           
           
           
