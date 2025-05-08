@@ -37,16 +37,26 @@
     </div>
 
     <div class="space-y-4 rounded-lg border border-gray-200 bg-white shadow-sm">
-        <form class="space-y-2 flex-col p-2 ">
-            <label class="mb-2 block text-sm font-medium">
-                Do You Have a Voucher Code ? 
-            </label>
-            <mat-form-field appearance="outline">
-                <mat-label>Voucher code</mat-label>
-                 <input type="text" matInput>
-            </mat-form-field>
-            <button mat-flat-button>Apply Code</button>
+        <form class="space-y-2 flex-col p-4">
+          <label class="mb-2 block text-sm font-medium">
+            Do You Have a Voucher Code?
+          </label>
+      
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Voucher code</mat-label>
+            <input type="text" matInput>
+          </mat-form-field>
+      
+          <button
+            mat-flat-button
+            color="primary"
+            class="w-full flex items-center justify-center gap-2 rounded-md py-2 transition hover:bg-blue-700 hover:shadow-lg"
+          >
+            <mat-icon>redeem</mat-icon>
+            Apply Code
+          </button>
         </form>
-    </div>
+      </div>
+      
 
 </div>

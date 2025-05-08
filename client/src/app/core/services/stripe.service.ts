@@ -12,19 +12,19 @@ import { AccountService } from './account.service';
 })
 export class StripeService {
   baseUrl = environment.apiUrl;
-  private cartSerivce = inject(CartService);
+  private cartService = inject(CartService);
   private http = inject(HttpClient);
-  private stripePromse? : Promise<Stripe | null>;
+  private stripePromise? : Promise<Stripe | null>;
   private elements? : StripeElements;
   private addressElement? : StripeAddressElement
   private accountService = inject(AccountService);
 
   constructor(){
-    this.stripePromse = loadStripe(environment.stiprePublicKey);
+    this.stripePromise = loadStripe(environment.stripePublicKey);
   }
 
   getStripeInstance(){
-    return this.stripePromse;
+    return this.stripePromise;
   };
 
   async initializeElements(){
@@ -92,11 +92,11 @@ export class StripeService {
 
 
   createOrUpdatePaymentIntent(){
-    const cart = this.cartSerivce.cart();
+    const cart = this.cartService.cart();
     if(!cart) throw new Error('Problem With Cart!');
     return this.http.post<Cart>(this.baseUrl + 'payment/' + cart.id,{}).pipe(
       map(cart => {
-        this.cartSerivce.cart.set(cart);
+        this.cartService.setCart(cart);
         return cart
       })
     );
