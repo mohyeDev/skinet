@@ -2,10 +2,11 @@
   <div class="w-3/4">
     <mat-stepper
       (selectionChange)="onStepChange($event)"
+      [linear]="true"
       #stepper
       class="bg-white border border-gray-200 shadow-sm"
     >
-      <mat-step label="Address">
+      <mat-step label="Address" [completed]="completionStatus().address">
         <div id="address-element"></div>
         <div class="flex justify-end mt01">
           <mat-checkbox
@@ -19,23 +20,23 @@
           <button routerLink="/shop" mat-stroked-button>
             Continue Shopping
           </button>
-          <button matStepperNext mat-flat-button>Next</button>
+          <button matStepperNext [disabled]="!completionStatus().address" mat-flat-button>Next</button>
         </div>
       </mat-step>
 
-      <mat-step label="Shipping">
-        <app-checkout-delivery></app-checkout-delivery>
+      <mat-step label="Shipping" [completed]="completionStatus().delivery">
+        <app-checkout-delivery (deliveryComplete)="handleDeliveryChange($event)"></app-checkout-delivery>
         <div class="flex justify-between mt-6">
           <button matStepperPrevious mat-stroked-button>Back</button>
-          <button matStepperNext mat-flat-button>Next</button>
+          <button [disabled]="!completionStatus().delivery" matStepperNext mat-flat-button>Next</button>
         </div>
       </mat-step>
 
-      <mat-step label="Payment">
+      <mat-step label="Payment" [completed]="completionStatus().card">
         <div id="payment-element"></div>
         <div class="flex justify-between mt-6">
           <button matStepperPrevious mat-stroked-button>Back</button>
-          <button matStepperNext mat-flat-button>Next</button>
+          <button [disabled]="!completionStatus().card" matStepperNext mat-flat-button>Next</button>
         </div>
       </mat-step>
 
