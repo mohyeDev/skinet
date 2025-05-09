@@ -15,6 +15,7 @@ import { CheckoutDeliveryComponent } from "./checkout-delivery/checkout-delivery
 import { CheckoutReviewComponent } from "./checkout-review/checkout-review.component";
 import { CartService } from '../../core/services/cart.service';
 import { CurrencyPipe, JsonPipe } from '@angular/common';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-checkout',
@@ -29,6 +30,7 @@ import { CurrencyPipe, JsonPipe } from '@angular/common';
     CheckoutReviewComponent,
     CurrencyPipe,
     JsonPipe,
+    MatProgressSpinnerModule
 
 ],
   templateUrl: './checkout.component.html',
@@ -48,6 +50,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   )
 
   confirmationToken?: ConfirmationToken ; 
+  loading = false ; 
 
 
 
@@ -126,6 +129,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   async confirmPayment(stepper:MatStepper){
 
+    this.loading =true ; 
+
     try {
 
       if(this.confirmationToken){
@@ -143,6 +148,10 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       this.snackbar.error(error.message || 'Something went wrong');
       stepper.previous();
       
+    }
+
+    finally{
+      this.loading = false ; 
     }
   }
 
