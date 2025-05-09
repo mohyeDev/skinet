@@ -1,6 +1,6 @@
 import { RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
-import { StripeAddressElement, StripeAddressElementChangeEvent, StripePaymentElement, StripePaymentElementChangeEvent } from '@stripe/stripe-js';
+import { ConfirmationToken, StripeAddressElement, StripeAddressElementChangeEvent, StripePaymentElement, StripePaymentElementChangeEvent } from '@stripe/stripe-js';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { StripeService } from '../../core/services/stripe.service';
@@ -44,6 +44,8 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   completionStatus =  signal<{address: boolean , card : boolean , delivery:boolean}>(
     {address:false , card : false , delivery : false},
   )
+
+  confirmationToken?: ConfirmationToken ; 
 
 
 
@@ -102,10 +104,20 @@ export class CheckoutComponent implements OnInit, OnDestroy {
         const address = await this.getAddressFromStripeAddress();
         address && firstValueFrom(this.accountService.updateAdress(address));
       }
+
+
     }
+
+
+
 
     if(event.selectedIndex === 2 ){
       await firstValueFrom(this.stripeService.createOrUpdatePaymentIntent());
+    }
+
+
+    if(event.selectedIndex === 3) {
+      await this.getConfirmationToken() ; 
     }
 
   }
@@ -130,6 +142,32 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     else return  null
   }
 
+
+
+  async getConfirmationToken(){
+
+
+    try {
+
+    if(Object.values(this.completionStatus()).every(status => status === true)){
+      const result = await this.stripeService.createConfirmationToken();
+
+      if(result.error) throw new Error(result.error.message) ;
+
+      this.confirmationToken =result.confirmationToken ;
+      console.log(this.confirmationToken);
+      
+
+        
+
+    }
+      
+    } catch (error: any) {
+
+      this.snackbar.error(error.message);
+      
+    }
+  }
 
 
   ngOnDestroy(): void {
