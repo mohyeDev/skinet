@@ -1,7 +1,7 @@
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { ConfirmationToken, StripeAddressElement, StripeAddressElementChangeEvent, StripePaymentElement, StripePaymentElementChangeEvent } from '@stripe/stripe-js';
-import { MatStepperModule } from '@angular/material/stepper';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { MatCheckboxChange, MatCheckboxModule } from '@angular/material/checkbox';
 import { StripeService } from '../../core/services/stripe.service';
 import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
@@ -28,7 +28,8 @@ import { CurrencyPipe, JsonPipe } from '@angular/common';
     CheckoutDeliveryComponent,
     CheckoutReviewComponent,
     CurrencyPipe,
-    JsonPipe
+    JsonPipe,
+
 ],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss',
@@ -37,6 +38,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
   private stripeService = inject(StripeService);
   private snackbar = inject(SnackbarService);
   private accountService = inject(AccountService);
+  private router = inject(Router);
   addressElement?: StripeAddressElement;
   paymentElement? : StripePaymentElement;
   cartService = inject(CartService);
@@ -120,6 +122,28 @@ export class CheckoutComponent implements OnInit, OnDestroy {
       await this.getConfirmationToken() ; 
     }
 
+  }
+
+  async confirmPayment(stepper:MatStepper){
+
+    try {
+
+      if(this.confirmationToken){
+        const result = await this.stripeService.confirmPayment(this.confirmationToken);
+        if(result.error) throw new Error(result.error.message);
+        else{
+          this.cartService.deleteCart();
+          this.cartService.selectedDelivery.set(null);
+          this.router.navigateByUrl('/checkout/success');
+        }
+
+      }
+      
+    } catch (error :any) {
+      this.snackbar.error(error.message || 'Something went wrong');
+      stepper.previous();
+      
+    }
   }
 
 

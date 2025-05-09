@@ -11,6 +11,7 @@ import { LoginComponent } from './features/account/login/login.component';
 import { RegisterComponent } from './features/account/register/register.component';
 import { authGuard } from './core/guards/auth.guard';
 import { emptyCardGuard } from './core/guards/empty-card.guard';
+import { CheckoutSuccessComponent } from './features/checkout/checkout-success/checkout-success.component';
 
 export const routes: Routes = [
   {
@@ -54,6 +55,12 @@ export const routes: Routes = [
   {
     path: 'account/login',
     component : LoginComponent 
+  },
+
+  {
+    path:'checkout/success' , 
+    component : CheckoutSuccessComponent,
+    canActivate:[authGuard]
   },
 
 
