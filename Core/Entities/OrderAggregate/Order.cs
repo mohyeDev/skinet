@@ -13,7 +13,7 @@ public class Order : BaseEntity
 
      public PaymentSummary PaymentSummary {get;set;} = null! ;
 
-     public IReadOnlyList<OrderItem> OrderItems {get ;set;} = [];
+     public List<OrderItem> OrderItems {get ;set;} = [];
 
      public decimal Subtotal {get;set;}
 
