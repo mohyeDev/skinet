@@ -12,6 +12,10 @@ public interface ISpecification<T>
 
     Expression<Func<T, object>>? OrderByDesc { get; }
 
+    List<Expression<Func<T,object>>> Includes {get;}
+
+    List<string> IncludeStrings {get;} // For Then Include
+
     bool IsDistnict {get;}
 
     int Take {get;}

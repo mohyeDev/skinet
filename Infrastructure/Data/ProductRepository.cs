@@ -10,7 +10,7 @@ public class ProductRepository(StoreContext context) : IProductRepository
     public void AddProduct(Product product)
     {
         context.Products.Add(product);
-    }
+    } 
 
     public void DeleteProduct(Product product)
     {
@@ -31,6 +31,7 @@ public class ProductRepository(StoreContext context) : IProductRepository
     {
 
         var query = context.Products.AsQueryable();
+
 
         if(!string.IsNullOrWhiteSpace(brand))
         {
