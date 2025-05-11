@@ -15,7 +15,7 @@ public interface IGenericRepository<T> where T : BaseEntity
 
     void Remove(T Entity);
 
-    Task<bool> SaveAllAsync();
+  
 
     bool Exists(int id);
 
