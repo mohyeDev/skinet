@@ -1,7 +1,7 @@
 using API.RequestHelper;
 using Core.Entities;
+using Core.Interfaces;
 using Core.Specification;
-using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;

@@ -3,7 +3,6 @@ using API.RequestHelper;
 using Azure;
 using Core.Entities;
 using Core.Interfaces;
-using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
