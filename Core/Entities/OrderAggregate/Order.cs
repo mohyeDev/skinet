@@ -22,7 +22,9 @@ public class Order : BaseEntity
      public required string PaymentIntentId {get;set;} 
 
      
-
+     public decimal GetTotal(){
+          return Subtotal + DeliveryMethod.Price;
+     }
 
 
 
