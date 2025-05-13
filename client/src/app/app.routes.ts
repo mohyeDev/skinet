@@ -12,8 +12,7 @@ import { RegisterComponent } from './features/account/register/register.componen
 import { authGuard } from './core/guards/auth.guard';
 import { emptyCardGuard } from './core/guards/empty-card.guard';
 import { CheckoutSuccessComponent } from './features/checkout/checkout-success/checkout-success.component';
-import { OrderComponent } from './features/orders/order.component';
-import { OrderDetailedComponent } from './features/orders/order-detailed/order-detailed.component';
+import { OrderComponent } from './features/orders/order/order.component';
 
 export const routes: Routes = [
   {
@@ -65,18 +64,20 @@ export const routes: Routes = [
     canActivate:[authGuard]
   },
 
-   {
-    path:'order' , 
-    component : OrderComponent,
+   
+  {
+    path:'order',
+    component:OrderComponent,
     canActivate:[authGuard]
   },
 
-
-   {
-    path:'order/:id' , 
-    component : OrderDetailedComponent ,
+  {
+    path:'order/:id',
+    component:OrderComponent,
     canActivate:[authGuard]
+
   },
+
 
 
 
