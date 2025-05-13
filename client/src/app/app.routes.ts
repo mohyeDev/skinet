@@ -13,6 +13,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { emptyCardGuard } from './core/guards/empty-card.guard';
 import { CheckoutSuccessComponent } from './features/checkout/checkout-success/checkout-success.component';
 import { OrderComponent } from './features/orders/order/order.component';
+import { OrderDetailedComponent } from './features/orders/order-detailed/order-detailed.component';
 
 export const routes: Routes = [
   {
@@ -73,7 +74,7 @@ export const routes: Routes = [
 
   {
     path:'order/:id',
-    component:OrderComponent,
+    component:OrderDetailedComponent,
     canActivate:[authGuard]
 
   },
