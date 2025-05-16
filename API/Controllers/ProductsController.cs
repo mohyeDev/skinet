@@ -8,25 +8,25 @@ namespace API.Controllers;
 
 public class ProductsController(IUnitOfWork unit) : BaseApiController
 {
-   
+
 
     [HttpGet]
 
-    public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts([FromQuery]ProcutSpecParams specParams)
+    public async Task<ActionResult<IReadOnlyList<Product>>> GetProducts([FromQuery] ProcutSpecParams specParams)
     {
-        var spec =new ProductSpecification(specParams);
+        var spec = new ProductSpecification(specParams);
 
-
-        return await CreatePagedResult(unit.Repository<Product>(),spec,specParams.PageIndex,specParams.PageSize);
+        return await CreatePagedResult(unit.Repository<Product>(), spec, specParams.PageIndex, specParams.PageSize);
     }
     [HttpGet("{id:int}")] //api/products/2
 
     public async Task<ActionResult<Product>> GetProduct(int id)
     {
         var product = await unit.Repository<Product>().GetByIdAsync(id);
-        if(product is null){
+        if (product is null)
+        {
 
-            return NotFound(new {message = "Product not found"});
+            return NotFound(new { message = "Product not found" });
         }
         return product;
     }
@@ -35,28 +35,28 @@ public class ProductsController(IUnitOfWork unit) : BaseApiController
 
     public async Task<ActionResult<Product>> CreateProduct(Product product)
     {
-       unit.Repository<Product>().Add(product);
+        unit.Repository<Product>().Add(product);
 
-        if(await unit.Complete())
+        if (await unit.Complete())
         {
-            return CreatedAtAction("GetProduct",new {id = product.Id} , product);
+            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
         }
         return BadRequest("Problem Creating Product");
     }
 
     [HttpPut("{id:int}")]
 
-    public async Task<ActionResult> UpdateProduct(int id , Product product)
+    public async Task<ActionResult> UpdateProduct(int id, Product product)
     {
 
-        if(product.Id != id || !ProdutExists(id))
+        if (product.Id != id || !ProdutExists(id))
         {
             return BadRequest("Cannot Update This Product");
         }
 
         unit.Repository<Product>().Update(product);
 
-        if(await unit.Complete() )
+        if (await unit.Complete())
         {
             return NoContent();
         }
@@ -70,10 +70,10 @@ public class ProductsController(IUnitOfWork unit) : BaseApiController
     public async Task<ActionResult> DeleteProduct(int id)
     {
         var product = await unit.Repository<Product>().GetByIdAsync(id);
-        if(product is null) return NotFound();
+        if (product is null) return NotFound();
 
         unit.Repository<Product>().Remove(product);
-        if(await unit.Complete())
+        if (await unit.Complete())
         {
             return NoContent();
         }
@@ -105,14 +105,9 @@ public class ProductsController(IUnitOfWork unit) : BaseApiController
 
 
 
-    private bool  ProdutExists(int id)
+    private bool ProdutExists(int id)
     {
         return unit.Repository<Product>().Exists(id);
     }
 
-    }
-
-
-
-
-
+}
