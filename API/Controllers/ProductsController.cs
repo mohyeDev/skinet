@@ -16,6 +16,7 @@ public class ProductsController(IUnitOfWork unit) : BaseApiController
     {
         var spec = new ProductSpecification(specParams);
 
+
         return await CreatePagedResult(unit.Repository<Product>(), spec, specParams.PageIndex, specParams.PageSize);
     }
     [HttpGet("{id:int}")] //api/products/2

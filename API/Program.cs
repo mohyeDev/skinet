@@ -51,7 +51,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<AppUser>(); // api/login , register , ...
-app.MapHub<NotificationHub>("/hub/notifications");
+app.MapHub<NotificationHub>("/api/hub/notification");
+
 try
 {
     using var scope = app.Services.CreateScope();
