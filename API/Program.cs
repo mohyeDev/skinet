@@ -1,4 +1,5 @@
 using API.Middleware;
+using API.SignalR;
 using Core.Entities;
 using Core.Interfaces;
 using Infrastructure;
@@ -38,16 +39,19 @@ builder.Services.AddSingleton<ICartService,CartService>();
 builder.Services.AddScoped<IPaymentService , PaymentService>();
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 
-builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<StoreContext>(); 
+builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<StoreContext>();
 builder.Services.AddAuthorization();
+builder.Services.AddSignalR();
 var app = builder.Build(); 
 
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowCredentials().WithOrigins("https://localhost:4200"));
+
 app.UseAuthentication(); 
 app.UseAuthorization();
 app.MapControllers();
 app.MapGroup("api").MapIdentityApi<AppUser>(); // api/login , register , ...
+app.MapHub<NotificationHub>("/hub/notifications");
 try
 {
     using var scope = app.Services.CreateScope();
