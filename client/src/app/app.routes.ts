@@ -14,6 +14,7 @@ import { emptyCardGuard } from './core/guards/empty-card.guard';
 import { CheckoutSuccessComponent } from './features/checkout/checkout-success/checkout-success.component';
 import { OrderComponent } from './features/orders/order/order.component';
 import { OrderDetailedComponent } from './features/orders/order-detailed/order-detailed.component';
+import { orderCompleteGuard } from './core/guards/order-complete.guard';
 
 export const routes: Routes = [
   {
@@ -62,7 +63,7 @@ export const routes: Routes = [
   {
     path:'checkout/success' , 
     component : CheckoutSuccessComponent,
-    canActivate:[authGuard]
+    canActivate:[authGuard , orderCompleteGuard]
   },
 
    
